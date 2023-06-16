@@ -1,0 +1,150 @@
+package clases;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+
+import clases.empleado.EmpleadoEventual;
+import clases.empleado.EmpleadoPlantilla;
+import clases.empleado.Medico;
+
+public class ModeloDatos {
+
+	HashMap<String, Paciente> pacientesMap;
+	HashMap<String, EmpleadoPlantilla> empleadosPlantillaMap;
+	HashMap<String, EmpleadoEventual> empleadosEventualMap;
+	HashMap<String, Medico> medicosMap;
+	ArrayList<CitaMedica> citasList;
+
+	public ModeloDatos() {
+		pacientesMap = new HashMap<String, Paciente>();
+		empleadosPlantillaMap = new HashMap<String, EmpleadoPlantilla>();
+		empleadosEventualMap = new HashMap<String, EmpleadoEventual>();
+		medicosMap = new HashMap<String, Medico>();
+		citasList = new ArrayList<CitaMedica>();
+
+	}
+
+	public boolean validadDatos() {
+		if (!pacientesMap.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void registrarPersona(Paciente miPaciente) {
+		pacientesMap.put(miPaciente.getNumeroDeDNI(), miPaciente);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miPaciente.getNombre() + " Satisfactoriamente");
+	}
+
+	public void registrarPersona(EmpleadoPlantilla miEmpPlantilla) {
+		empleadosPlantillaMap.put(miEmpPlantilla.getNumeroDeDNI(), miEmpPlantilla);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miEmpPlantilla.getNombre() + " Satisfactoriamente");
+	}
+
+	public void registrarPersona(EmpleadoEventual miEmpEventual) {
+		empleadosEventualMap.put(miEmpEventual.getNumeroDeDNI(), miEmpEventual);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miEmpEventual.getNombre() + " Satisfactoriamente");
+	}
+
+	public void registrarPersona(Medico miMedico) {
+		medicosMap.put(miMedico.getNumeroDeDNI(), miMedico);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miMedico.getNombre() + " Satisfactoriamente");
+	}
+
+	public void registrarCitaMedica(CitaMedica miCita) {
+		citasList.add(miCita);
+		JOptionPane.showMessageDialog(null, "Se ha registrado la cita exitosamente\n");
+		JOptionPane.showMessageDialog(null, miCita.informacionCitaMedica());
+	}
+
+	public void imprimirEmpleadosEventuales() {
+		String msj = "EMPLEADOS EVENTUALES REGISTRADOS\\n";
+
+		for (String clave : empleadosEventualMap.keySet()) {
+			empleadosEventualMap.get(clave).imprimirDatosPersona(msj);
+
+		}
+	}
+
+	public void imprimirEmpleadosPorPlantilla() {
+		String msj = "EMPLEADOS POR PLANTILLA REGISTRADOS\\n";
+
+		for (EmpleadoPlantilla empleadoPlantilla : empleadosPlantillaMap.values()) {
+			empleadoPlantilla.imprimirDatosPersona(msj);
+
+		}
+	}
+
+	public void imprimirMedicos() {
+		String msj = "MEDICOS REGISTRADOS\\n";
+
+		for (Map.Entry<String, Medico> elemento : medicosMap.entrySet()) {
+
+			elemento.getValue().imprimirDatosPersona(msj);
+
+		}
+	}
+
+	public Paciente consultarPacientePorDocumento(String documentoPaciente) {
+		Paciente miPaciente = null;
+
+		if (pacientesMap.containsKey(documentoPaciente)) {
+			miPaciente = pacientesMap.get(documentoPaciente);
+		}
+
+		return miPaciente;
+	}
+
+	public Medico consultarMedicoPorNombre(String nombreMedico) {
+
+		for (Medico medico : medicosMap.values()) {
+
+			if (medico.getNombre().equalsIgnoreCase(nombreMedico)) {
+				return medico;
+			}
+
+		}
+
+		return null;
+	}
+
+	public void imprimirCitasMedicasProgramadas() {
+
+		String msj = "CITAS MEDICAS PROGRAMADAS\n";
+		CitaMedica miCita = null;
+
+		JOptionPane.showMessageDialog(null, msj + "\n");
+
+		if (citasList.size() > 0) {
+			for (int i = 0; i < citasList.size(); i++) {
+				miCita = citasList.get(i);
+				JOptionPane.showMessageDialog(null, miCita.informacionCitaMedica());
+
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "No existen citas Programadas");
+		}
+
+	}
+
+	public void imprimirPacientes() {
+		String msj = "PACIENTES REGISTRADOS\\n";
+		Iterator<String> iterator = pacientesMap.keySet().iterator();
+
+		while (iterator.hasNext()) {
+
+			String clave = iterator.next();
+			pacientesMap.get(clave).imprimirDatosPersona(msj);
+		}
+	}
+
+}
