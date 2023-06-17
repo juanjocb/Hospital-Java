@@ -27,8 +27,7 @@ public class Persona {
 		try {
 			numeroDeDNI = JOptionPane.showInputDialog("ingrese el numero del documento");
 		} catch (NumberFormatException e) {
-			System.out.println();
-			JOptionPane.showMessageDialog(null, "Error: Ingresaste un numero de DNI incorrecto. Valor ingresado NO numerico.");
+			System.out.println("Error: Ingresaste un numero de DNI incorrecto. Valor ingresado NO numerico.");
 		}
 
 		nombre = JOptionPane.showInputDialog("ingrese el nombre");

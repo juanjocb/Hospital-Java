@@ -52,7 +52,7 @@ public class Procesos {
 				JOptionPane.showMessageDialog(null, "El sistema ha terminado!");
 				break;
 			default:
-				JOptionPane.showMessageDialog(null, "No existe el codigo, verifique nuevamente");
+				JOptionPane.showInputDialog("No existe el codigo, verifique nuevamente");
 				break;
 			}
 		} while (opcion != 5);
@@ -74,10 +74,6 @@ public class Procesos {
 		menuImprimir += "3. Listar Empleados Por Plantilla\n";
 		menuImprimir += "4. Listar Medicos\n";
 		menuImprimir += "5. Listar Citas Programadas\n";
-		menuImprimir += "6. Consultar Paciente Individial\n";
-		menuImprimir += "7. Consultar Empleado Eventual Individial\n";
-		menuImprimir += "8. Consultar Empleado por Plantilla Individual\n";
-		menuImprimir += "9. Consultar Medico Individual\n";
 		menuImprimir += "Ingrese una opcion";
 
 		int opcion = Integer.parseInt(JOptionPane.showInputDialog(menuImprimir));
@@ -110,30 +106,7 @@ public class Procesos {
 			if (miModeloDatos.validarCitasList()) {
 				miModeloDatos.imprimirCitasMedicasProgramadas();
 			}
-			break;
-		case 6:
-			if (miModeloDatos.validarPacientes()) {
-				String doc = JOptionPane.showInputDialog("Ingrese el documento del paciente");
-				miModeloDatos.consultarPacientePorDocumento(doc);
-			}
-			break;
-		case 7:
-			if (miModeloDatos.validarEmpleadosEventualMap()) {
-				String numDni = JOptionPane.showInputDialog("Ingresa el numero de DNI del empleado Eventual");
-				miModeloDatos.consultarEmpEventual(numDni);
-			}
-			break;
-		case 8:
-			if (miModeloDatos.validarEmpleadosPlantillaMap()) {
-				String numDni = JOptionPane.showInputDialog("Ingresa el numero de DNI del empleado por Plantilla");
-				miModeloDatos.consultarEmpPlantilla(numDni);
-			}
-			break;
-		case 9:
-			if (miModeloDatos.validarMedicosMap()) {
-				String nom = JOptionPane.showInputDialog("Ingresa el nombre del medico");
-				miModeloDatos.consultarMedicoPorNombre(nom);
-			}
+
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "No existe esa opcion");

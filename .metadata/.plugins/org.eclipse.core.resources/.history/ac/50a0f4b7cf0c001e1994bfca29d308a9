@@ -106,26 +106,15 @@ public class ModeloDatos {
 	}
 
 	public void registrarPersona(EmpleadoEventual miEmpEventual) {
-		if (!empleadosPlantillaMap.containsKey(miEmpEventual.getNumeroDeDNI())) {
-			empleadosEventualMap.put(miEmpEventual.getNumeroDeDNI(), miEmpEventual);
-			JOptionPane.showMessageDialog(null,
-					"Se ha registrado el paciente " + miEmpEventual.getNombre() + " Satisfactoriamente");
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"No fue posible registrar al empleado por plantilla, su codigo ya existe en la lista");
-		}
+		empleadosEventualMap.put(miEmpEventual.getNumeroDeDNI(), miEmpEventual);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miEmpEventual.getNombre() + " Satisfactoriamente");
 	}
 
 	public void registrarPersona(Medico miMedico) {
-		if (!empleadosPlantillaMap.containsKey(miMedico.getNumeroDeDNI())) {
-			medicosMap.put(miMedico.getNumeroDeDNI(), miMedico);
-			JOptionPane.showMessageDialog(null,
-					"Se ha registrado el paciente " + miMedico.getNombre() + " Satisfactoriamente");
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"No fue posible registrar al empleado por plantilla, su codigo ya existe en la lista");
-		}
-
+		medicosMap.put(miMedico.getNumeroDeDNI(), miMedico);
+		JOptionPane.showMessageDialog(null,
+				"Se ha registrado el paciente " + miMedico.getNombre() + " Satisfactoriamente");
 	}
 
 	public void registrarCitaMedica(CitaMedica miCita) {
@@ -179,12 +168,9 @@ public class ModeloDatos {
 
 		if (pacientesMap.containsKey(documentoPaciente)) {
 			miPaciente = pacientesMap.get(documentoPaciente);
-			return miPaciente;
-		} else {
-			JOptionPane.showMessageDialog(null, "El paciente no se encuentra en la base de datos");
-			return null;
 		}
 
+		return miPaciente;
 	}
 
 	public Medico consultarMedicoPorNombre(String nombreMedico) {
@@ -197,36 +183,7 @@ public class ModeloDatos {
 
 		}
 
-		JOptionPane.showMessageDialog(null, "El medico no se encuentra en la base de datos");
 		return null;
-	}
-
-	public EmpleadoEventual consultarEmpEventual(String numDni) {
-
-		EmpleadoEventual miEmpEventual = null;
-
-		if (empleadosEventualMap.containsKey(numDni)) {
-			miEmpEventual = empleadosEventualMap.get(numDni);
-			return miEmpEventual;
-		} else {
-			JOptionPane.showMessageDialog(null, "El empleado no se encuentra en la base de datos");
-			return null;
-		}
-
-	}
-
-	public EmpleadoPlantilla consultarEmpPlantilla(String numDni) {
-
-		EmpleadoPlantilla miEmpPlantilla = null;
-
-		if (empleadosPlantillaMap.containsKey(numDni)) {
-			miEmpPlantilla = empleadosPlantillaMap.get(numDni);
-			return miEmpPlantilla;
-		} else {
-			JOptionPane.showMessageDialog(null, "El empleado no se encuentra en la base de datos");
-			return null;
-		}
-
 	}
 
 	public void imprimirCitasMedicasProgramadas() {

@@ -17,15 +17,9 @@ public class Paciente extends Persona {
 		super.registrarDatos();
 
 		listaMedicamentosAlergico = new ArrayList<String>();
-		
-		try {
-			numeroHistoriaClinica = Integer
-					.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la historia Clicina"));
-			sexo = JOptionPane.showInputDialog("Ingrese el sexo");
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "UPS! Ingresaste un valor NO numero. Intentalo nuevamente");
-		}
-
+		numeroHistoriaClinica = Integer
+				.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la historia Clicina"));
+		sexo = JOptionPane.showInputDialog("Ingrese el sexo");
 		grupoSanguineo = JOptionPane.showInputDialog("Ingrese el grupo Sanguineo");
 
 		String pregunta = JOptionPane.showInputDialog("�Es alergico a algun medicamento? ingrese si o no");

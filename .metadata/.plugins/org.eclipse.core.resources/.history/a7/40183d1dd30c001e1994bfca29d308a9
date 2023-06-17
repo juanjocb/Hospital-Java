@@ -200,9 +200,9 @@ public class ModeloDatos {
 		JOptionPane.showMessageDialog(null, "El medico no se encuentra en la base de datos");
 		return null;
 	}
-
-	public EmpleadoEventual consultarEmpEventual(String numDni) {
-
+	
+	public EmpleadoEventual consultarEmpEventuales(String numDni) {
+		
 		EmpleadoEventual miEmpEventual = null;
 
 		if (empleadosEventualMap.containsKey(numDni)) {
@@ -214,10 +214,10 @@ public class ModeloDatos {
 		}
 
 	}
-
-	public EmpleadoPlantilla consultarEmpPlantilla(String numDni) {
-
-		EmpleadoPlantilla miEmpPlantilla = null;
+	
+public EmpleadoPlantilla consultarEmpPlantilla(String numDni) {
+		
+	EmpleadoPlantilla miEmpPlantilla = null;
 
 		if (empleadosPlantillaMap.containsKey(numDni)) {
 			miEmpPlantilla = empleadosPlantillaMap.get(numDni);

@@ -113,26 +113,22 @@ public class Procesos {
 			break;
 		case 6:
 			if (miModeloDatos.validarPacientes()) {
-				String doc = JOptionPane.showInputDialog("Ingrese el documento del paciente");
-				miModeloDatos.consultarPacientePorDocumento(doc);
+				miModeloDatos.consultarPaciente();
 			}
 			break;
 		case 7:
 			if (miModeloDatos.validarEmpleadosEventualMap()) {
-				String numDni = JOptionPane.showInputDialog("Ingresa el numero de DNI del empleado Eventual");
-				miModeloDatos.consultarEmpEventual(numDni);
+				miModeloDatos.consultarEmpEventual();
 			}
 			break;
 		case 8:
 			if (miModeloDatos.validarEmpleadosPlantillaMap()) {
-				String numDni = JOptionPane.showInputDialog("Ingresa el numero de DNI del empleado por Plantilla");
-				miModeloDatos.consultarEmpPlantilla(numDni);
+				miModeloDatos.consultarEmpPlantilla();
 			}
 			break;
 		case 9:
 			if (miModeloDatos.validarMedicosMap()) {
-				String nom = JOptionPane.showInputDialog("Ingresa el nombre del medico");
-				miModeloDatos.consultarMedicoPorNombre(nom);
+				miModeloDatos.consultarMedico();
 			}
 			break;
 		default:

@@ -24,13 +24,7 @@ public class Persona {
 
 	public void registrarDatos() {
 
-		try {
-			numeroDeDNI = JOptionPane.showInputDialog("ingrese el numero del documento");
-		} catch (NumberFormatException e) {
-			System.out.println();
-			JOptionPane.showMessageDialog(null, "Error: Ingresaste un numero de DNI incorrecto. Valor ingresado NO numerico.");
-		}
-
+		numeroDeDNI = JOptionPane.showInputDialog("ingrese el numero del documento");
 		nombre = JOptionPane.showInputDialog("ingrese el nombre");
 		apellido = JOptionPane.showInputDialog("ingrese el apellido");
 		fechaDeNacimiento = JOptionPane.showInputDialog("ingrese la Fecha de Nacimiento");
